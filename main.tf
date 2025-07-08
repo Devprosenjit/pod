@@ -83,3 +83,11 @@ resource "azurerm_linux_virtual_machine" "linux_vm" {
 
 
 }
+
+
+# # more rg add
+resource "azurerm_resource_group" "rg" {
+  name = "debu"
+  location ="centralindia"
+  
+}
