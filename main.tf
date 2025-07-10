@@ -191,4 +191,10 @@ resource "azurerm_web_application_firewall_policy" "example" {
       }
     }
   }
+
+}
+
+check our code
+
 check your code
+
