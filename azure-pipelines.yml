@@ -13,7 +13,7 @@ steps:
     inputs:
       provider: 'azurerm'
       command: 'init'
-      backendServiceArm: 'docker-service'
+      workingDirectory: '$(System.DefaultWorkingDirectory)/rg.tf'
       backendAzureRmStorageAccountName: 'prosenjit'
       backendAzureRmContainerName: 'docker-container'
       backendAzureRmKey: 'pod.statefile'
