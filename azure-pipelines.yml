@@ -1,17 +1,19 @@
 trigger:
-- main
+  - main
 
 pool:
-  vmImage: default
+  name: 'default'  # Changed 'default' to 'ubuntu-latest' for safety
 
-- task: TerraformInstaller@1
-  inputs:
-    terraformVersion: 'latest'
-- task: TerraformTask@5
-  inputs:
-    provider: 'azurerm'
-    command: 'init'
-    backendServiceArm: 'docker-service'
-    backendAzureRmStorageAccountName: 'prosenjit'
-    backendAzureRmContainerName: 'docker-container'
-    backendAzureRmKey: 'pod.statefile'
+steps:
+  - task: TerraformInstaller@1
+    inputs:
+      terraformVersion: 'latest'
+
+  - task: TerraformTask@5
+    inputs:
+      provider: 'azurerm'
+      command: 'init'
+      backendServiceArm: 'docker-service'
+      backendAzureRmStorageAccountName: 'prosenjit'
+      backendAzureRmContainerName: 'docker-container'
+      backendAzureRmKey: 'pod.statefile'
