@@ -4,20 +4,14 @@ trigger:
 pool:
   vmImage: default
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
-
- -   task: TerraformTask@5
-inputs:
-      provider: 'azurerm'
-      command: 'init'
-      backendServiceArm: 'Azure subscription 1(ba3dd1c9-2ade-4648-a13f-65581e2a2874)'
-      backendAzureRmStorageAccountName: 'backendstorageterraform'
-      backendAzureRmContainerName: 'backend-container'
-      backendAzureRmKey: 'pod.key'
+- task: TerraformInstaller@1
+  inputs:
+    terraformVersion: 'latest'
+- task: TerraformTask@5
+  inputs:
+    provider: 'azurerm'
+    command: 'init'
+    backendServiceArm: 'docker-service'
+    backendAzureRmStorageAccountName: 'prosenjit'
+    backendAzureRmContainerName: 'docker-container'
+    backendAzureRmKey: 'pod.statefile'
